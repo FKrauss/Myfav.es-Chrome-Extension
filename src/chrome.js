@@ -3,7 +3,7 @@ var version = "1.0";
 
 // event listeners
 chrome.browserAction.onClicked.addListener(actionClicked);
-
+chrome.extension.onMessage.addListener(messageReceived);
 
 // when you visit a page checks if its currently in your faves
 function monitorPage() {
@@ -26,4 +26,8 @@ function actionClicked(tab) {
 // inject modal into live page
 function injectModal() {
 
+}
+
+function messageReceived(request, sender, sendResponse) {
+  
 }

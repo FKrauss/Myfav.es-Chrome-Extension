@@ -14,7 +14,8 @@
   },
 
   "permissions": [
-    "http://*/*",
+    "http://*/",
+    "https://*/",
     "cookies",
     "contextMenus",
     "tabs",
@@ -23,6 +24,13 @@
     "bookmarks",
     "history",
     "unlimitedStorage"
+  ],
+
+  "web_accessible_resources": [
+    "lib/jquery.js",
+    "src/save.css",
+    "src/save.js",
+    "src/chrome.js"
   ],
 
   // http://developer.chrome.com/extensions/contentSecurityPolicy.html
