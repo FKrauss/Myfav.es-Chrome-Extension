@@ -1,0 +1,728 @@
+/*-------------------------------------*/
+/*----------External Faves------------ */
+/*-------------------------------------*/
+#myfaves-save {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 99999;
+  background-color: #FFFFFF;
+  border: 3px solid #CCCCCC;
+  padding: 25px;
+  margin-left: -435px;
+  width: 804px;
+  text-align: left;
+}
+#myfaves-save li {
+  list-style-type: none;
+}
+#myfaves-save {
+  display: none;
+}
+
+#myfaves-save h2,
+#myfaves-save h3 {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+}
+#myfaves-save h2 {
+  font-size: 12px;
+  font-weight: bold;
+  color: #383838;
+  text-align: left;
+}
+#myfaves-save h3 {
+  float: right;
+  color: #999999;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 12px;
+}
+
+#myfaves-save .icon-list {
+  margin: 28px auto;
+  width: 804px;
+  height: 401px;
+  background-color: #E9E9E9;
+}
+
+#myfaves-save .icon-list li {
+  position: relative;
+  float: left;
+  width: 200px;
+  height: 200px;
+  background-color: #E9E9E9;
+  border-right: 1px solid #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
+}
+#myfaves-save .icon-list li.active {
+  background-color : #006DC9;
+  background       : -webkit-linear-gradient(top, #005EB4 0%, #0081E3 100%);
+  background       : -moz-linear-gradient(top, #005EB4 0%, #0081E3 100%);
+  background       : -o-linear-gradient(top, #005EB4 0%, #0081E3 100%);
+  background       : -ms-linear-gradient(top, #005EB4 0%, #0081E3 100%);
+  background       : linear-gradient(top, #005EB4 0%, #0081E3 100%);
+}
+#myfaves-save .icon-list li.active .info {
+  color: #00417C;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
+}
+#myfaves-save .icon-list li.active .info:hover {
+  color: #0059AA;
+}
+
+#myfaves-save .icon-list li .icon {
+  position: relative;
+  margin-top: 13px;
+  margin-left: 16px;
+}
+
+#myfaves-save .icon-list li .info {
+  cursor: pointer;
+  position: absolute;
+  bottom: 7px;
+  right: 7px;
+  font-size: 14px;
+  color: #CACACA;
+  text-shadow: 0px -1px 0px rgba(255, 255, 255, 0.4);
+}
+#myfaves-save .icon-list li .popup a {
+  font-weight: bold;
+}
+#myfaves-save .icon-list li .info:hover {
+  color: #AAAAAA;
+}
+
+#myfaves-save .pagination {
+  margin: 20px auto;
+}
+
+#myfaves-save .actions {
+  margin: 0px auto;
+  text-align: center;
+}
+
+
+/*-------------------------------------*/
+/*------------ PAGINATION ------------ */
+/*-------------------------------------*/
+#myfaves-save .tabs {
+  height: 39px;
+}
+#myfaves-save .tabs li {
+  width: 139px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  border-top: 1px solid #E6E7EA;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid #E6E7EA;
+  float: left;
+  height: 34px;
+  background-color: #F0F1F4;
+  background-image: -ms-linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+  background-image: -moz-linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+  background-image: -o-linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F0F1F4), color-stop(1, #E9EAEE));
+  background-image: -webkit-linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+  background-image: linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+  padding: 0px;
+  line-height: 34px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #0079F0;
+  text-shadow: 0px 1px 0px #FCFCFC;
+
+  -webkit-box-shadow: 0 -3px 6px -6px rgba(0, 0, 0, 0.25) inset;
+  -moz-box-shadow: 0 -3px 6px -6px rgba(0, 0, 0, 0.25) inset;
+  box-shadow: 0 -3px 6px -6px rgba(0, 0, 0, 0.25) inset;
+}
+#myfaves-save .tabs li:last-child {
+  border-right: 1px solid #E6E7EA;
+}
+#myfaves-save .tabs li.hover {
+  color: #198DFF;
+}
+#myfaves-save .tabs li.active {
+  margin-top: -4px;
+  border-top: 3px solid #D0D5DA;
+  border-left: 1px solid #D0D5DA;
+  border-right: 1px solid #D0D5DA;
+  border-bottom: none;
+  background: #FFFFFF none;
+  cursor: default;
+  color: #000000;
+  height: 36px;
+  line-height: 36px;
+  text-shadow: none;
+
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#myfaves-save .tabs.pagination {
+  position: relative;
+  height: 36px;
+  padding: 0px;
+  font-size: 0px;
+  text-align: center;
+  background-color: #F0F1F4;
+  background-image: -ms-linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+  background-image: -moz-linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+  background-image: -o-linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F0F1F4), color-stop(1, #E9EAEE));
+  background-image: -webkit-linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+  background-image: linear-gradient(top, #F0F1F4 0%, #E9EAEE 100%);
+}
+#myfaves-save .tabs.pagination li {
+  height: 36px;
+  line-height: 36px;
+  border-top: none;
+  border-bottom: none;
+  display: inline-block;
+  float: none;
+  width: auto;
+  padding: 0px 14px;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#myfaves-save .tabs.pagination li.hover {
+  background-color: #FAFAFA;
+  background-image: none;
+  color: #198DFF;
+}
+#myfaves-save .tabs.pagination li.active,
+#myfaves-save .tabs.pagination li.active.hover {
+  margin: 0px;
+  border-top: 0px;
+  border-left: 1px solid #D0D5DA;
+  border-right: 1px solid #D0D5DA;
+  border-bottom: 2px solid #D0D5DA;
+  width: auto;
+  padding: 0px 14px;
+  color: #333333;
+}
+#myfaves-save .tabs.pagination li.previous {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#myfaves-save .tabs.pagination li.next {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+#myfaves-save .tabs.pagination li.next.hover,
+#myfaves-save .tabs.pagination li.previous.hover {
+  -webkit-box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1) inset;
+}
+#myfaves-save .tabs.pagination li.disabled,
+#myfaves-save .tabs.pagination li.disabled.hover {
+  background-color: transparent;
+  cursor: default;
+  color: #CCCCCC;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+#myfaves-save .tabs.pagination li.ellipsus,
+#myfaves-save .tabs.pagination li.ellipsus.hover {
+  cursor: default;
+  background-color: transparent;
+  color: #555555;
+  padding: 0px 8px;
+  color: #888888;
+}
+
+
+/*-------------------------------------*/
+/*----------- ICON PREVIEW ----------- */
+/*-------------------------------------*/
+
+.icon.preview {
+  position: relative;
+  width: 168px;
+  height: 183px;
+  margin-top: -7px;
+  margin-left: -7px;
+
+  background: url(http://beta.myfav.es/images/icons/shadow/drop-shadow.png) no-repeat;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+}
+.icon.preview.down .gradient {
+  background-position: 0px -156px;
+  opacity: 1;
+}
+
+.icon.preview .color,
+.icon.preview .image,
+.icon.preview .gradient,
+.icon.preview .sheen {
+  text-indent: -8008px;
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 156px;
+  height: 156px;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  z-index: 100;
+  outline: 1px solid transparent;
+}
+.icon.preview .color {
+  position: absolute;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.icon.preview .gradient {
+  position: absolute;
+  background: url(http://beta.myfav.es/images/icons/gradient/default.png) no-repeat;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.icon.preview .subtle.gradient {
+  background-image: url(http://beta.myfav.es/images/icons/gradient/subtle.png);
+}
+.icon.preview .strong.gradient {
+  background-image: url(http://beta.myfav.es/images/icons/gradient/strong.png);
+}
+.icon.preview .radiosity.gradient {
+  background-image: url(http://beta.myfav.es/images/icons/gradient/radiosity.png);
+}
+.icon.preview .vignette.gradient {
+  background-image: url(http://beta.myfav.es/images/icons/gradient/vignette.png);
+}
+.icon.preview .vignette-light.gradient {
+  background-image: url(http://beta.myfav.es/images/icons/gradient/vignette-light.png);
+}
+
+.icon.preview .sheen.glossy {
+  background: url(http://beta.myfav.es/images/icon-sheen.png) no-repeat 0px 0px;
+}
+
+/*-------------------------------------*/
+/*------------- UI Button ------------ */
+/*-------------------------------------*/
+
+.ui.button {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  height: auto !important;
+
+  cursor                      : pointer;
+  display                     : inline-block;
+  vertical-align              : middle;
+
+  border                      : 1px solid #FFFFFF;
+
+  background-color            : #F0F0F0;
+  background                  : -webkit-linear-gradient(#FFFFFF 0%, #F1F1F1 100%);
+  background                  : -moz-linear-gradient(#FFFFFF 0%, #F1F1F1 100%);
+  background                  : -o-linear-gradient(#FFFFFF 0%, #F1F1F1 100%);
+  background                  : -ms-linear-gradient(#FFFFFF 0%, #F1F1F1 100%);
+  background                  : linear-gradient(#FFFFFF 0%, #F1F1F1 100%);
+
+  line-height: 1;
+
+  -webkit-box-shadow          :
+    0px 0px 0px 1px #DADADA,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.1)
+  ;
+  -moz-box-shadow             :
+    0px 0px 0px 1px #DADADA,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.1)
+  ;
+  box-shadow                  :
+    0px 0px 0px 1px #DADADA,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.1)
+  ;
+
+  padding                     : 7px 11px;
+
+  font-size                   : 12px;
+  font-weight                 : bold;
+  color                       : #777777;
+  text-transform              : uppercase;
+  text-shadow                 : 0px 1px 0px rgba(255, 255, 255, 0.9);
+  text-align                  : center;
+
+  -webkit-border-radius       : 5px;
+  -moz-border-radius          : 5px;
+  border-radius               : 5px;
+
+  -webkit-user-select         : none;
+  -moz-user-select            : none;
+  -ms-user-select             : none;
+  user-select                 : none;
+  -webkit-tap-highlight-color : rgba(0, 0, 0, 0);
+}
+
+.ui.button.hover {
+  -webkit-box-shadow :
+    0px 0px 0px 1px #BBBBBB,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  -moz-box-shadow    :
+    0px 0px 0px 1px #BBBBBB,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  box-shadow         :
+    0px 0px 0px 1px #BBBBBB,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  color: #555555;
+
+}
+
+.ui.button.down {
+  background : -webkit-linear-gradient(#E9E9E9 0%, #FFFFFF 100%);
+  background : -moz-linear-gradient(#E9E9E9 0%, #FFFFFF 100%);
+  background : -o-linear-gradient(#E9E9E9 0%, #FFFFFF 100%);
+  background : -ms-linear-gradient(#E9E9E9 0%, #FFFFFF 100%);
+  background : linear-gradient(#E9E9E9 0%, #FFFFFF 100%);
+}
+.ui.button.loading,
+.ui.button.loading.down {
+  cursor: pointer;
+  background: #F0F0F0 url(http://beta.myfav.es/images/settings-site-add-throbber.gif) no-repeat 50% 50%;
+  text-indent: -9999px;
+}
+
+.ui.button.blue,
+.ui.button.active {
+  cursor             : default;
+  color              : #118FEB;
+
+  background-color   : #E1EEF7;
+  background         : -webkit-linear-gradient(#E9F5FC 0%, #C7E1F3 100%);
+  background         : -moz-linear-gradient(#E9F5FC 0%, #C7E1F3 100%);
+  background         : -o-linear-gradient(#E9F5FC 0%, #C7E1F3 100%);
+  background         : -ms-linear-gradient(#E9F5FC 0%, #C7E1F3 100%);
+  background         : linear-gradient(#E9F5FC 0%, #C7E1F3 100%);
+
+  -webkit-box-shadow : 0px 0px 0px 1px #93D5FF;
+  -moz-box-shadow    : 0px 0px 0px 1px #93D5FF;
+  box-shadow         : 0px 0px 0px 1px #93D5FF;
+}
+.ui.button.blue {
+  cursor: pointer;
+}
+.ui.button.blue.loading,
+.ui.button.active.loading {
+  background: #E2F0FA url(http://beta.myfav.es/images/settings-site-remove-throbber.gif) no-repeat 50% 50%;
+}
+.ui.button.blue.loading.down,
+.ui.button.blue.loading.toggle.down,
+.ui.button.active.loading.down,
+.ui.button.active.loading.toggle.down {
+  background: #D8EBF8 url(http://beta.myfav.es/images/settings-site-remove-throbber.gif) no-repeat 50% 50%;
+}
+
+
+/* Toggle Button */
+.ui.button.active.toggle {
+  cursor: pointer;
+}
+
+.ui.button.blue.hover,
+.ui.button.active.toggle.hover{
+  -webkit-box-shadow : 0px 0px 0px 1px #48B0FF;
+  -moz-box-shadow    : 0px 0px 0px 1px #48B0FF;
+  box-shadow         : 0px 0px 0px 1px #48B0FF;
+}
+.ui.button.blue.down,
+.ui.button.active.toggle.down {
+  cursor     : pointer;
+
+  background : -webkit-linear-gradient(#C7E1F3 0%, #E9F5FC 100%);
+  background : -moz-linear-gradient(#C7E1F3 0%, #E9F5FC 100%);
+  background : -o-linear-gradient(#C7E1F3 0%, #E9F5FC 100%);
+  background : -ms-linear-gradient(#C7E1F3 0%, #E9F5FC 100%);
+  background : linear-gradient(#C7E1F3 0%, #E9F5FC 100%);
+}
+
+/* New Style Button */
+.ui.button.primary {
+  background : -webkit-linear-gradient(#0084CC 0%, #004DCC 100%);
+  background : -moz-linear-gradient(#0084CC 0%, #004DCC 100%);
+  background : -o-linear-gradient(#0084CC 0%, #004DCC 100%);
+  background : -ms-linear-gradient(#0084CC 0%, #004DCC 100%);
+  background : linear-gradient(#0084CC 0%, #004DCC 100%);
+  box-shadow:
+    0px 1px 0px #0062B8 inset,
+    0px 2px 0px #349FD6 inset,
+    0px 1px 2px rgba(0, 0, 0, 0.3)
+  ;
+  color: #FFFFFF;
+  text-shadow: none;
+  border: none;
+}
+.ui.button.primary.hover {
+  background : -webkit-linear-gradient(#009CE6 0%, #005BE6 100%);
+  background : -moz-linear-gradient(#009CE6 0%, #005BE6 100%);
+  background : -o-linear-gradient(#009CE6 0%, #005BE6 100%);
+  background : -ms-linear-gradient(#009CE6 0%, #005BE6 100%);
+  background : linear-gradient(#009CE6 0%, #005BE6 100%);
+}
+.ui.button.primary.down {
+  background : -webkit-linear-gradient(#004DCC 0%, #0084CC 100%);
+  background : -moz-linear-gradient(#004DCC 0%, #0084CC 100%);
+  background : -o-linear-gradient(#004DCC 0%, #0084CC 100%);
+  background : -ms-linear-gradient(#004DCC 0%, #0084CC 100%);
+  background : linear-gradient(#004DCC 0%, #0084CC 100%);
+  -webkit-box-shadow:
+  0px -1px 0px #0062B8 inset,
+  0px -2px 0px #349FD6 inset,
+  0px 2px 1px rgba(0, 0, 0, 0.3)
+  ;
+  box-shadow:
+  0px -1px 0px #0062B8 inset,
+  0px -2px 0px #349FD6 inset,
+  0px 2px 1px rgba(0, 0, 0, 0.3)
+  ;
+}
+.ui.button.primary i {
+  vertical-align: baseline;
+}
+.ui.button.primary i:before {
+  vertical-align: baseline;
+  width: auto;
+  height: auto;
+}
+.ui.button.primary i.right-open {
+  margin: 0em 0em 0em 0.1em;
+}
+
+/* Success or Approval State */
+.ui.button.approve,
+.ui.button.success,
+.ui.button.success.hover,
+.ui.button.success.toggle.hover,
+.ui.button.success.down,
+.ui.button.success.toggle.down {
+  cursor             : default;
+  background         : -webkit-linear-gradient(#ECFFE9 0%, #C9F3C9 100%);
+  background         : -moz-linear-gradient(#ECFFE9 0%, #C9F3C9 100%);
+  background         : -o-linear-gradient(#ECFFE9 0%, #C9F3C9 100%);
+  background         : -ms-linear-gradient(#ECFFE9 0%, #C9F3C9 100%);
+  background         : linear-gradient(#ECFFE9 0%, #C9F3C9 100%);
+
+  -webkit-box-shadow : 0px 0px 0px 1px #78D373;
+  -moz-box-shadow    : 0px 0px 0px 1px #78D373;
+  box-shadow         : 0px 0px 0px 1px #78D373;
+
+  color              : #287824;
+}
+.ui.button.approve {
+  cursor: pointer;
+}
+.ui.button.approve.hover {
+  -webkit-box-shadow :
+    0px 0px 0px 1px #66B362,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  -moz-box-shadow    :
+    0px 0px 0px 1px #66B362,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  box-shadow         :
+    0px 0px 0px 1px #66B362,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+}
+.ui.button.approve.down {
+  background : -webkit-linear-gradient(#C9F3C9 0%, #ECFFE9 100%);
+  background : -moz-linear-gradient(#C9F3C9 0%, #ECFFE9 100%);
+  background : -o-linear-gradient(#C9F3C9 0%, #ECFFE9 100%);
+  background : -ms-linear-gradient(#C9F3C9 0%, #ECFFE9 100%);
+  background : linear-gradient(#C9F3C9 0%, #ECFFE9 100%);
+  -webkit-box-shadow :
+    0px 0px 0px 1px #66B362,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  -moz-box-shadow    :
+    0px 0px 0px 1px #66B362,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  box-shadow         :
+    0px 0px 0px 1px #66B362,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+}
+
+/* Warn or Error State */
+.ui.button.warn,
+.ui.button.error,
+.ui.button.error.hover,
+.ui.button.error.toggle.hover,
+.ui.button.error.down,
+.ui.button.error.toggle.down {
+  cursor: default;
+  background         : -webkit-linear-gradient(#FFE8E9 0%, #F3CDCA 100%);
+  background         : -moz-linear-gradient(#FFE8E9 0%, #F3CDCA 100%);
+  background         : -o-linear-gradient(#FFE8E9 0%, #F3CDCA 100%);
+  background         : -ms-linear-gradient(#FFE8E9 0%, #F3CDCA 100%);
+  background         : linear-gradient(#FFE8E9 0%, #F3CDCA 100%);
+
+  -webkit-box-shadow : 0px 0px 0px 1px #D37473;
+  -moz-box-shadow    : 0px 0px 0px 1px #D37473;
+  box-shadow         : 0px 0px 0px 1px #D37473;
+
+  color              : #782624;
+}
+
+.ui.button.warn {
+  cursor: pointer;
+}
+.ui.button.warn.hover {
+  -webkit-box-shadow :
+    0px 0px 0px 1px #AF5E5D,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  -moz-box-shadow    :
+    0px 0px 0px 1px #AF5E5D,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  box-shadow         :
+    0px 0px 0px 1px #AF5E5D,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+}
+.ui.button.warn.down {
+  background : -webkit-linear-gradient(#F3CDCA 0%, #FFE8E9 100%);
+  background : -moz-linear-gradient(#F3CDCA 0%, #FFE8E9 100%);
+  background : -o-linear-gradient(#F3CDCA 0%, #FFE8E9 100%);
+  background : -ms-linear-gradient(#F3CDCA 0%, #FFE8E9 100%);
+  background : linear-gradient(#F3CDCA 0%, #FFE8E9 100%);
+  -webkit-box-shadow :
+    0px 0px 0px 1px #AF5E5D,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  -moz-box-shadow    :
+    0px 0px 0px 1px #AF5E5D,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+  box-shadow         :
+    0px 0px 0px 1px #AF5E5D,
+    0px 1px 2px 0px rgba(0, 0, 0, 0.2)
+  ;
+}
+
+.ui.button.fixed-width {
+  position: relative;
+  width         : 145px;
+  padding-left  : 0px;
+  padding-right : 0px;
+}
+.ui.button.fixed-width i {
+  position: absolute;
+  top: 50%;
+  margin-top: -7px;
+  left: 10px;
+}
+.ui.button i {
+  margin-right: 5px;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+
+/* Disabled */
+.ui.button.disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Simple Style */
+.ui.button.simple {
+  box-shadow: none;
+  border: 1px solid #DADADA;
+}
+.ui.button.simple.hover {
+  box-shadow: none;
+  border-color: #BBBBBB;
+}
+.ui.button.simple.active.toggle,
+.ui.button.simple.active {
+  border-color: #93D5FF;
+}
+.ui.button.simple.active.toggle.hover,
+.ui.button.simple.active.hover {
+  box-shadow: none;
+  border-color: #48B0FF;
+  color: #107FD0;
+}
+.ui.button.simple.success,
+.ui.button.simple.success.hover,
+.ui.button.simple.active.success,
+.ui.button.simple.active.success.hover {
+  border-color: #78D373;
+}
+
+/* Resizes */
+
+.ui.button.large {
+  font-size      : 15px;
+  font-weight    : bold;
+  text-transform : none;
+  font-weight    : bold;
+  padding        : 7px 20px 8px;
+}
+.ui.button.large.fixed-width {
+  width: 142px;
+  padding-left  : 0px;
+  padding-right : 0px;
+}
+.ui.button.huge {
+  font-size      : 20px;
+  font-weight    : bold;
+  text-transform : none;
+  font-weight    : bold;
+  padding        : 9px 53px;
+}
+.ui.button.primary.huge {
+  padding        : 12px 55px;
+}
+
+/*******************************
+          Dimmer Styles
+ *******************************/
+
+ /* the one true page dimmer */
+#dimmer {
+  position: absolute;
+  visibility: hidden;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}
+#dimmer .content {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  visibility: hidden;
+
+  background-color: #000000;
+  opacity: 0.0;
+}
