@@ -18,7 +18,6 @@
     "cookies",
     "contextMenus",
     "tabs",
-    // maybe
     "topSites",
     "bookmarks",
     "history",
@@ -32,10 +31,8 @@
     "src/chrome.js"
   ],
 
-  // http://developer.chrome.com/extensions/contentSecurityPolicy.html
   "content_security_policy": "script-src 'self' https://myfav.es; object-src 'self'",
 
-  // http://code.google.com/chrome/extensions/background_pages.html
   "background": {
     "scripts": [
       "lib/jquery.js",
@@ -52,17 +49,5 @@
     "default_icon"  :  "icons/icon19.png",
     "default_title" :  "Add site to myfav.es"
   }
-
-  /*
-  // http://code.google.com/chrome/extensions/content_scripts.html
-  "content_scripts": [
-    {
-      "matches" : ["http://*.myfav.es"],
-      "css"     : ["src/save.css"],
-      "js"      : ["lib/jquery.js", "src/save.js", "src/scrape.js"]
-    }
-  ],
-  */
-
 
 }
