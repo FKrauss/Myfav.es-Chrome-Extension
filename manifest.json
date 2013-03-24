@@ -5,7 +5,6 @@
   "description"      : "Myfav.es is an elegant start page replacement for your browser.",
   "manifest_version" : 2,
   "default_locale"   : "en",
-  // "update_url": "http://myhost.com/mytestextension/updates.xml"
   
   "icons": {
     "16"  : "icons/icon16.png",
