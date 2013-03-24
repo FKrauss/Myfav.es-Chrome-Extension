@@ -14,9 +14,10 @@
   },
 
   "permissions": [
-    "http://*.myfav.es/",
+    "http://*/*",
     "cookies",
     "contextMenus",
+    "tabs",
     // maybe
     "topSites",
     "bookmarks",
@@ -25,16 +26,27 @@
   ],
 
   // http://developer.chrome.com/extensions/contentSecurityPolicy.html
-  "content_security_policy": "script-src http://*.myfav.es; object-src 'self'",
+  "content_security_policy": "script-src 'self' https://myfav.es; object-src 'self'",
 
   // http://code.google.com/chrome/extensions/background_pages.html
-  "background_page" : "background.html",
-  "options_page"    : "src/options.html",
-
-  "chrome_url_overrides" : {
-    "pageToOverride": "src/myfaves.html"
+  "background": {
+    "scripts": [
+      "lib/jquery.js",
+      "src/chrome.js"
+    ]
   },
 
+  "options_page"         : "src/options.html",
+  "chrome_url_overrides" : {
+    "newtab": "src/myfaves.html"
+  },
+
+  "browser_action": {
+    "default_icon"  :  "icons/icon19.png",
+    "default_title" :  "Add site to myfav.es"
+  }
+
+  /*
   // http://code.google.com/chrome/extensions/content_scripts.html
   "content_scripts": [
     {
@@ -43,10 +55,7 @@
       "js"      : ["lib/jquery.js", "src/save.js", "src/scrape.js"]
     }
   ],
+  */
 
-  "browser_action": {
-    "default_icon"  :  "icons/icon19.png",
-    "default_title" : "Add site to myfav.es"
-  }
 
 }
