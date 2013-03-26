@@ -966,7 +966,7 @@ fav4 = {
   Module
   State
   Change text based on state context
-  Hover/Down/Active/Inactive
+  Hover/Pressed/Active/Inactive
   Author: Jack Lukic
   Last revision: May 2012
 
@@ -1004,23 +1004,25 @@ fav4 = {
 
 $.fn.state = function(parameters) {
   var
+
     $allModules     = $(this),
 
-    settings        = $.extend(true, {}, $.fn.state.settings, parameters),
     // make arguments available
     query           = arguments[0],
     passedArguments = [].slice.call(arguments, 1),
     invokedResponse
   ;
-  $(this)
+  $allModules
     .each(function() {
       var
         $module       = $(this),
 
+        settings      = $.extend(true, {}, $.fn.state.settings, parameters),
+
         selector      = $module.selector || '',
         element       = this,
         instance      = $module.data('module-' + settings.namespace),
-        methodInvoked = (instance !== undefined && typeof query == 'string'),
+        methodInvoked = (typeof query == 'string'),
 
         // shortcuts
         namespace     = settings.namespace,
@@ -1034,8 +1036,12 @@ $.fn.state = function(parameters) {
       module = {
 
         initialize: function() {
-          // kill existing state
-          module.destroy();
+          module.verbose('Initializing module for', element);
+
+          // allow module to guess desired state based on element
+          if(settings.automatic) {
+            module.add.defaults();
+          }
 
           // bind events with delegated events
           if(settings.context && selector !== '') {
@@ -1045,10 +1051,10 @@ $.fn.state = function(parameters) {
                 .on(selector, 'mouseleave.' + namespace, module.hover.disable)
               ;
             }
-            if( module.allows('down') ) {
+            if( module.allows('pressed') ) {
               $(element, settings.context)
-                .on(selector, 'mousedown.' + namespace, module.down.enable)
-                .on(selector, 'mouseup.'   + namespace, module.down.disable)
+                .on(selector, 'mousedown.' + namespace, module.pressed.enable)
+                .on(selector, 'mouseup.'   + namespace, module.pressed.disable)
               ;
             }
             if( module.allows('focus') ) {
@@ -1071,10 +1077,10 @@ $.fn.state = function(parameters) {
                 .on('mouseleave.' + namespace, module.hover.disable)
               ;
             }
-            if( module.allows('down') ) {
+            if( module.allows('pressed') ) {
               $module
-                .on('mousedown.' + namespace, module.down.enable)
-                .on('mouseup.'   + namespace, module.down.disable)
+                .on('mousedown.' + namespace, module.pressed.enable)
+                .on('mouseup.'   + namespace, module.pressed.disable)
               ;
             }
             if( module.allows('focus') ) {
@@ -1095,26 +1101,35 @@ $.fn.state = function(parameters) {
         },
 
         destroy: function() {
+          module.verbose('Destroying previous module for', element);
           $module
             .off('.' + namespace)
           ;
         },
 
         refresh: function() {
+          module.verbose('Refreshing selector cache for', element);
           $module = $(element);
         },
 
-        retrieve: function() {
-          if( module.is.disabled() ) {
-            return 'disabled';
+        add: {
+          defaults: function() {
+            var
+              userStates = parameters && $.isPlainObject(parameters.states)
+                ? parameters.states
+                : {}
+            ;
+            $.each(settings.defaults, function(type, typeStates) {
+              if( module.is[type] !== undefined && module.is[type]() ) {
+                module.verbose('Adding default states for detected type:', type, element);
+                $.extend(settings.states, typeStates, userStates);
+              }
+            });
           }
-          if( module.is.active() ) {
-            return 'active';
-          }
-          return 'inactive';
         },
 
         is: {
+
           active: function() {
             return $module.hasClass(className.active);
           },
@@ -1124,6 +1139,7 @@ $.fn.state = function(parameters) {
           inactive: function() {
             return !( $module.hasClass(className.active) );
           },
+
           enabled: function() {
             return !( $module.is(settings.filter.active) );
           },
@@ -1132,13 +1148,30 @@ $.fn.state = function(parameters) {
           },
           textEnabled: function() {
             return !( $module.is(settings.filter.text) );
+          },
+
+          // definitions for automatic type detection
+          button: function() {
+            return $module.is('.button:not(a, .submit)');
+          },
+          input: function() {
+            return $module.is('input');
           }
         },
 
         allows: function(state) {
           return states[state] || false;
         },
-
+        enable: function(state) {
+          if(module.allows(state)) {
+            $module.addClass( className[state] );
+          }
+        },
+        disable: function(state) {
+          if(module.allows(state)) {
+            $module.removeClass( className[state] );
+          }
+        },
         textFor: function(state) {
           return text[state] || false;
         },
@@ -1161,15 +1194,15 @@ $.fn.state = function(parameters) {
           }
         },
 
-        down : {
+        pressed : {
           enable: function() {
             $module
-              .addClass(className.down)
-              .one('mouseleave', module.down.disable)
+              .addClass(className.pressed)
+              .one('mouseleave', module.pressed.disable)
             ;
           },
           disable: function() {
-            $module.removeClass(className.down);
+            $module.removeClass(className.pressed);
           }
         },
 
@@ -1181,7 +1214,7 @@ $.fn.state = function(parameters) {
           if( module.allows('active') && module.is.enabled() ) {
             module.refresh();
             if(apiRequest !== undefined) {
-              module.bindAPI(apiRequest);
+              module.listenTo(apiRequest);
             }
             else {
               module.change();
@@ -1189,7 +1222,7 @@ $.fn.state = function(parameters) {
           }
         },
 
-        bindAPI: function(apiRequest) {
+        listenTo: function(apiRequest) {
           module.debug('API request detected, waiting for state signal');
           if(apiRequest) {
             if(text.loading) {
@@ -1198,12 +1231,12 @@ $.fn.state = function(parameters) {
             $.when(apiRequest)
               .then(function() {
                 if(apiRequest.state() == 'resolved') {
-                  module.debug('api request resolved');
+                  module.debug('API request succeeded');
                   settings.activateTest   = function(){ return true; };
                   settings.deactivateTest = function(){ return true; };
                 }
                 else {
-                  module.debug('api request failed');
+                  module.debug('API request failed');
                   settings.activateTest   = function(){ return false; };
                   settings.deactivateTest = function(){ return false; };
                 }
@@ -1255,6 +1288,7 @@ $.fn.state = function(parameters) {
         },
 
         sync: function() {
+          module.verbose('Syncing other buttons to current state');
           if( module.is.active() ) {
             $allModules
               .not($module)
@@ -1282,18 +1316,30 @@ $.fn.state = function(parameters) {
             if( module.is.textEnabled() ) {
               if( module.is.active() ) {
                 if(text.hover) {
+                  module.verbose('Changing text to hover text', text.hover);
                   module.text.update(text.hover);
                 }
                 else if(text.disable) {
+                  module.verbose('Changing text to disable text', text.disable);
                   module.text.update(text.disable);
+                }
+                else {
+                  module.verbose('Changing text to active text', text.active);
+                  module.text.update(text.active);
                 }
               }
               else {
                 if(text.hover) {
+                  module.verbose('Changing text to hover text', text.hover);
                   module.text.update(text.hover);
                 }
                 else if(text.enable){
+                  module.verbose('Changing text to enable text', text.enable);
                   module.text.update(text.enable);
+                }
+                else {
+                  module.verbose('Changing text to inactive text', text.inactive);
+                  module.text.update(text.inactive);
                 }
               }
             }
@@ -1306,10 +1352,12 @@ $.fn.state = function(parameters) {
               inactiveText = text.inactive || $module.data(metadata.storedText)
             ;
             if( module.is.textEnabled() ) {
-              if( module.is.active() ) {
+              if( module.is.active() && activeText) {
+                module.verbose('Resetting active text', activeText);
                 module.text.update(activeText);
               }
-              else {
+              else if(inactiveText) {
+                module.verbose('Resetting inactive text', activeText);
                 module.text.update(inactiveText);
               }
             }
@@ -1343,6 +1391,11 @@ $.fn.state = function(parameters) {
             return settings[name];
           }
           settings[name] = value;
+        },
+        verbose: function() {
+          if(settings.verbose) {
+            module.debug.apply(this, arguments);
+          }
         },
         debug: function() {
           var
@@ -1407,6 +1460,9 @@ $.fn.state = function(parameters) {
       }
       // otherwise initialize
       else {
+        if(instance !== undefined) {
+          module.destroy();
+        }
         module.initialize();
       }
     })
@@ -1422,7 +1478,12 @@ $.fn.state.settings = {
 
   // module info
   moduleName : 'State Module',
+
+  // debug output
   debug      : true,
+  // verbose debug output
+  verbose    : false,
+
   namespace  : 'state',
 
   // callback occurs on state change
@@ -1432,12 +1493,14 @@ $.fn.state.settings = {
   activateTest   : function() { return true; },
   deactivateTest : function() { return true; },
 
+  // whether to automatically map default states
+  automatic: true,
   // activate / deactivate changes all elements instantiated at same time
   sync: false,
 
   // selector filter
   filter     : {
-    text   : '.loading, .disabled',
+    text   : '.loading, .actived',
     active : '.disabled'
   },
 
@@ -1458,17 +1521,34 @@ $.fn.state.settings = {
   className: {
     focus   : 'focus',
     hover   : 'hover',
-    down    : 'down',
+    pressed : 'down',
     active  : 'active',
     loading : 'loading'
   },
 
+  defaults : {
+    input: {
+      hover   : true,
+      focus   : true,
+      pressed : true,
+      loading : false,
+      active  : false
+    },
+    button: {
+      hover   : true,
+      focus   : false,
+      pressed : true,
+      active  : false,
+      loading : true
+    }
+  },
+
   states     : {
-    focus    : true,
-    hover    : true,
-    down     : true,
-    loading  : false,
-    active   : false
+    hover   : true,
+    focus   : true,
+    pressed : true,
+    loading : false,
+    active  : false
   },
 
   text     : {
@@ -1484,6 +1564,7 @@ $.fn.state.settings = {
 
 
 })( jQuery, window , document );
+
 /*  ******************************
   Module - Tooltip / Popup
   Author: Jack Lukic

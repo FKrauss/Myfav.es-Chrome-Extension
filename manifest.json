@@ -21,11 +21,13 @@
     "topSites",
     "bookmarks",
     "history",
+    "storage",
     "unlimitedStorage"
   ],
 
   "web_accessible_resources": [
     "lib/jquery.js",
+    "src/options.html",
     "src/save.css",
     "src/save.js",
     "src/chrome.js"

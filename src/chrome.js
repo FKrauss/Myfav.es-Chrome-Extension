@@ -8,7 +8,7 @@ chrome.extension.onMessage.addListener(messageReceived);
 // when you visit a page checks if its currently in your faves
 function monitorPage() {
 
-}
+}     
 
 // toolbar button clicked
 function actionClicked(tab) {

@@ -1,0 +1,228 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+img {
+  display: block;
+}
+ul {
+  list-style: none;
+}
+
+/*--------------
+     General
+---------------*/
+
+body {
+  background-color: #FFFFFF;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.33;
+}
+body a {
+  color: #07A5FD;
+  text-decoration: none;
+}
+body a:hover {
+  color: #47BCFE;
+}
+
+.content {
+  width: 942px;
+  margin: 0px auto;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*--------------
+   Navigation
+---------------*/
+
+nav.main {
+  height: 55px;
+}
+nav.main .logo {
+  float: left;
+  margin-top: 8px;
+  width: 141px;
+  height: 34px;
+  background: url(images/myfav-logo.png) no-repeat;
+}
+nav.main .button {
+  float: right;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+/*--------------
+      Demo
+---------------*/
+
+.demo {
+  height: 120px;
+  background-image: -webkit-linear-gradient(#220D54 0%, #8F38A1 100%);
+  background-image: -moz-linear-gradient(#220D54 0%, #8F38A1 100%);
+  background-image: -o-linear-gradient(#220D54 0%, #8F38A1 100%);
+  background-image: -ms-linear-gradient(#220D54 0%, #8F38A1 100%);
+  background-image: linear-gradient(#220D54 0%, #8F38A1 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#220D54', endColorstr='#8F38A1');
+}
+.demo h3 {
+  padding-top: 15px;
+  font-size: 42px;
+  font-weight: bold;
+  color: #C9BBCD;
+  text-shadow: 0px 5px 3px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+/*--------------
+    Features
+---------------*/
+.bottom {
+  margin-top: 50px;
+  background-color: #F4F4F4;
+  background-image: -webkit-linear-gradient(#F4F4F4 0%, #FFFFFF 400px);
+  background-image: -moz-linear-gradient(#F4F4F4 0%, #FFFFFF 400px);
+  background-image: -o-linear-gradient(#F4F4F4 0%, #FFFFFF 400px);
+  background-image: -ms-linear-gradient(#F4F4F4 0%, #FFFFFF 400px);
+  background-image: linear-gradient(#F4F4F4 0%, #FFFFFF 400px);
+}
+
+.features {
+  position: relative;
+  top: -25px;
+  overflow: hidden;
+}
+.feature {
+  float: left;
+
+  width: 33.33%;
+
+  padding: 0% 3% 0px;
+
+  text-align: center;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.feature.first {
+  padding-left: 0%;
+}
+
+.feature .step {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+
+  background-color: #FFFFFF;
+  padding: 12px 17px;
+
+  font-size: 24px;
+  font-weight: bold;
+  border: 4px solid #CCCCCC;
+
+  -moz-border-radius: 1000px;
+  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
+}
+.feature .top.ui.huge.blue.button {
+  padding: 8px 90px !important;
+  font-size: 16px !important;
+}
+.feature input {
+  margin-top: -1px;
+  font-size: 14px;
+  padding: 10px 26px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  font-weight: bold;
+  width: 252px;
+  text-align: center;
+}
+.feature .select2-container .select2-choice {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  height: 28px;
+}
+.feature .select2-container .select2-choice span {
+  font-size: 14px;
+
+}
+
+.feature .header {
+  margin: 20px 0px 23px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0096FA;
+}
+.feature p {
+  margin: 20px 0px 8px;
+  font-size: 14px;
+  color: #545454;
+  text-align: center;
+}
+.feature p .button {
+  margin-left: 5px;
+}
+.feature .new {
+  display: inline-block;
+  background:url(/images/new-badge.gif) no-repeat;
+  width: 28px;
+  height: 11px;
+}
+
+.next-step {
+  padding: 0px 0px 80px;
+  text-align: center;
+}
+.next-step p {
+  margin-top: 13px;
+  font-size: 15px;
+}
+
+.footer {
+  margin-bottom: 180px;
+  border-top: 1px solid #DEDEDE;
+  padding-top: 7px;
+  line-height: 1;
+  font-size: 11px;
+  color: #AAAAAA;
+}
+
+.footer .copyright {
+  float: left;
+}
+.footer .links {
+  float: right;
+}
+.footer .links a {
+  float: right;
+  margin: 0px 5px;
+  color: #AAAAAA;
+}
+.footer .links a:hover {
+  color: #07A5FD;
+}
+.footer .links .twitter {
+  background: url(../images/twitter-bird.png) no-repeat 8px 0px;
+  padding-left: 25px;
+}

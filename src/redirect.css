@@ -1,0 +1,11 @@
+body,
+html {
+  height:100%;
+}
+
+body {
+  background: #000000 url(images/bg/gradient/gradient-nebula.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
