@@ -1,7 +1,7 @@
 {
 
   "name"             : "Myfav.es",
-  "version"          : "0.11",
+  "version"          : "0.12",
   "description"      : "Myfav.es is an elegant start page replacement for your browser.",
   "manifest_version" : 2,
   "default_locale"   : "en",
