@@ -20,7 +20,7 @@
       template: function() {
         return ''
         + '<section id="myfaves-save">'
-        + '  <h3>You can use the arrows keys to navigate quickly</h3>'
+        + '  <h3>Or select a similar site: <select class="site"></select> </h3>'
         + '  <h2>'
         + '    Pick your icon'
         + '  </h2>'
@@ -68,36 +68,7 @@
    $saveModal = handler.modal.create();
 
    // check if user already had icon
-
-    fav4.iconExists({
-      data: {
-        url: currentURL
-      },
-      success: function(response) {
-        if(response.success) {
-          if(response.sites !== undefined) {
-            allSites = [];
-            $.each(response.sites, function (id, site){
-              allSites.push(site);
-            });
-            console.log(response.sites);
-            primarySite = allSites[0];
-            icons       = primarySite.icons || false;
-            if(icons) {
-              console.log(icons);
-              $saveModal.saveModal('icon.populate', icons);
-            }
-          }
-          else {
-            // go to upload form
-            window.alert('Site doesnt exist on myfaves');
-          }
-        }
-      },
-      failure: function() {
-        window.alert('There was an error please try again later');
-      }
-    });
+   $saveModal.saveModal('lookup', currentURL);
   }
 
 }());

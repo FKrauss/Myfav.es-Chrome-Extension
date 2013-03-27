@@ -118,6 +118,8 @@ fav4 = {
 
       // modal exists only once
       $modal         = $(this),
+      $siteSelect    = $modal.find(settings.selector.siteSelect),
+      $siteHeader    = $modal.find(settings.selector.siteHeader),
       $modalMiniIcon = $modal.find(settings.selector.modalMiniIcon),
       $iconList      = $modal.find(settings.selector.iconList),
       $iconPreview   = $modal.find(settings.selector.iconPreview),
@@ -140,6 +142,7 @@ fav4 = {
           $addIcon       = $module.find(settings.selector.addIcon),
 
           instance       = $module.data('module-save'),
+          allSites,
 
           eventNamespace = settings.eventNamespace,
           className      = settings.className,
@@ -176,6 +179,85 @@ fav4 = {
               .siblings()
                 .removeClass(className.active)
             ;
+          },
+
+          lookup: function(url) {
+            fav4.iconExists({
+              data: {
+                url: url
+              },
+              success: function(response) {
+                if(response.success) {
+                  if(response.sites !== undefined) {
+                    allSites = [];
+                    $.each(response.sites, function (id, site){
+                      allSites.push(site);
+                    });
+                    primarySite = allSites[0];
+                    module.populate(primarySite);
+                  }
+                  else {
+                    // go to upload form
+                    window.alert('Site doesnt exist on myfaves');
+                  }
+                }
+              },
+              failure: function() {
+                window.alert('There was an error please try again later');
+              }
+            });
+          },
+
+          populate: function(primarySite) {
+            var icons = primarySite.icons || false;
+            module.site.addTitle(primarySite);
+            module.site.addDropdown(allSites, primarySite);
+            module.icon.populate(icons);
+          },
+
+          site: {
+
+            addTitle: function (site) {
+              $siteHeader
+                .html('Pick an icon for ' + site.title)
+              ;
+            },
+            addDropdown: function(sites, primarySite) {
+              var
+                $parent = $siteSelect.parent(),
+                html    = '',
+                siteID  = primarySite.id || false
+              ;
+              if(sites.length > 1) {
+                $.each(sites, function(name, site){
+                  html += settings.templates.dropdown(site);
+                });
+                $siteSelect
+                  .html(html)
+                  .off('change')
+                  .on('change', function() {
+                    var 
+                      siteID = $(this).val(),
+                      primarySite
+                    ;
+                    $.each(allSites, function(index, site) {
+                      if(site.id == siteID) {
+                        primarySite = site;
+                      }
+                    });
+                    module.populate( primarySite );
+                  })
+                ;
+                if(siteID) {
+                  $siteSelect.val(siteID);
+                }
+                $parent.show();
+              }
+              else {
+                $parent.hide();
+              }
+            },
+
           },
 
           icon: {
@@ -377,9 +459,10 @@ fav4 = {
               var
                 activePosition = activePosition || 0,
                 startPosition  = startPosition || 0,
-                endPosition    = (startPosition + settings.iconsPerPage <= icons.length)
-                  ? startPosition + settings.iconsPerPage
-                  : icons.length,
+                isLastPage     = (startPosition + settings.iconsPerPage > icons.length),
+                endPosition    = (isLastPage)
+                  ? icons.length
+                  : startPosition + settings.iconsPerPage,
                 pageIcons      = icons.slice(startPosition, endPosition),
                 html           = ''
               ;
@@ -387,6 +470,10 @@ fav4 = {
               $.each(pageIcons, function(index, icon) {
                 html += settings.templates.icon(icon, settings.domain);
               });
+              console.log(isLastPage);
+              if(isLastPage) {
+                html += settings.templates.uploadIcon(settings.domain);
+              }
               $iconList
                 .data('startPosition', startPosition)
                 .data('icons', icons)
@@ -591,6 +678,9 @@ fav4 = {
     },
 
     selector    : {
+      // headers
+      siteHeader   : 'h2',
+      siteSelect   : 'select.site',
       // site list
       icons         : 'li',
       miniIcon      : '.icon',
@@ -608,6 +698,11 @@ fav4 = {
     },
 
     templates: {
+      dropdown: function(site) {
+        if(site.name !== undefined && site.url !== undefined) {
+          return '<option value="'+ site.id +'">' + site.name + '</option>';
+        }
+      },
       icon: function(icon, domain) {
         var
           html     = '',
@@ -640,6 +735,16 @@ fav4 = {
           '</li>'
         ;
         return html;
+      },
+      uploadIcon: function(domain) {
+        return '' +
+          '<li class="upload">' +
+          '  <div class="preview icon">' +
+          '    <div class="color" style="background-color:#FFFFFF"></div>' +
+          '    <div class="image" style="background-image: url(' + domain + 'images/scrape/upload-your-own.png)"></div>' +
+          '    <div class="gradient"></div>' +
+          '    <div class="sheen"></div>' +
+          '  </div>'
       },
       page: function(number) {
         return '<li>' + number + '</li>';
