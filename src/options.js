@@ -120,7 +120,7 @@ $(document)
             var
               defaults = {
                 username : '',
-                homepage : 'http://www.myfav.es'
+                homepage : 'https://www.myfav.es'
               },
               settings = $.extend(true, {}, defaults, settings)
             ;

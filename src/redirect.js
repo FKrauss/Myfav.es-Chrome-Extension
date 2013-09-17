@@ -1,10 +1,11 @@
 function redirect() {
   chrome.storage.sync.get(['homepage', 'username'], function(settings) {
+    window.alert('ok');
     var
       defaults     = {
         username : false,
         homepage : false,
-        subDomain: 'http://beta.'
+        subDomain: 'https://www.'
       },
       username     = settings['username'] || false,
       homepage     = settings['homepage'] || false,

@@ -282,7 +282,7 @@ ul {
   margin-top: -7px;
   margin-left: -7px;
 
-  background: url(http://beta.myfav.es/images/icons/shadow/drop-shadow.png) no-repeat;
+  background: url(https://www.myfav.es/images/icons/shadow/drop-shadow.png) no-repeat;
   -webkit-tap-highlight-color:rgba(0,0,0,0);
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
@@ -315,29 +315,29 @@ ul {
 }
 .icon.preview .gradient {
   position: absolute;
-  background: url(http://beta.myfav.es/images/icons/gradient/default.png) no-repeat;
+  background: url(https://www.myfav.es/images/icons/gradient/default.png) no-repeat;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
 .icon.preview .subtle.gradient {
-  background-image: url(http://beta.myfav.es/images/icons/gradient/subtle.png);
+  background-image: url(https://www.myfav.es/images/icons/gradient/subtle.png);
 }
 .icon.preview .strong.gradient {
-  background-image: url(http://beta.myfav.es/images/icons/gradient/strong.png);
+  background-image: url(https://www.myfav.es/images/icons/gradient/strong.png);
 }
 .icon.preview .radiosity.gradient {
-  background-image: url(http://beta.myfav.es/images/icons/gradient/radiosity.png);
+  background-image: url(https://www.myfav.es/images/icons/gradient/radiosity.png);
 }
 .icon.preview .vignette.gradient {
-  background-image: url(http://beta.myfav.es/images/icons/gradient/vignette.png);
+  background-image: url(https://www.myfav.es/images/icons/gradient/vignette.png);
 }
 .icon.preview .vignette-light.gradient {
-  background-image: url(http://beta.myfav.es/images/icons/gradient/vignette-light.png);
+  background-image: url(https://www.myfav.es/images/icons/gradient/vignette-light.png);
 }
 
 .icon.preview .sheen.glossy {
-  background: url(http://beta.myfav.es/images/icon-sheen.png) no-repeat 0px 0px;
+  background: url(https://www.myfav.es/images/icon-sheen.png) no-repeat 0px 0px;
 }
 
 /*-------------------------------------*/
@@ -423,7 +423,7 @@ ul {
 .ui.button.loading,
 .ui.button.loading.down {
   cursor: pointer !important;
-  background: #F0F0F0 url(http://beta.myfav.es/images/settings-site-add-throbber.gif) no-repeat 50% 50% !important;
+  background: #F0F0F0 url(https://www.myfav.es/images/settings-site-add-throbber.gif) no-repeat 50% 50% !important;
   text-indent: -9999px !important;
 }
 
@@ -448,13 +448,13 @@ ul {
 }
 .ui.button.blue.loading,
 .ui.button.active.loading {
-  background: #E2F0FA url(http://beta.myfav.es/images/settings-site-remove-throbber.gif) no-repeat 50% 50% !important;
+  background: #E2F0FA url(https://www.myfav.es/images/settings-site-remove-throbber.gif) no-repeat 50% 50% !important;
 }
 .ui.button.blue.loading.down,
 .ui.button.blue.loading.toggle.down,
 .ui.button.active.loading.down,
 .ui.button.active.loading.toggle.down {
-  background: #D8EBF8 url(http://beta.myfav.es/images/settings-site-remove-throbber.gif) no-repeat 50% 50% !important;
+  background: #D8EBF8 url(https://www.myfav.es/images/settings-site-remove-throbber.gif) no-repeat 50% 50% !important;
 }
 
 

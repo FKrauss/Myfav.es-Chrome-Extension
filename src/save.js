@@ -7,7 +7,7 @@ fav4 = {
     var
       settings = {
         dataType: 'json',
-        url: 'http://beta.myfav.es/api/icon-exists/',
+        url: 'https://www.myfav.es/api/icon-exists/',
         data: {
           url      : false,
           extended : true
@@ -26,7 +26,7 @@ fav4 = {
     var
       settings = {
         dataType: 'json',
-        url: 'http://beta.myfav.es/api/icon/',
+        url: 'https://www.myfav.es/api/icon/',
         success: function(){},
         failure: function(){}
       }
@@ -44,7 +44,7 @@ fav4 = {
         settings = {
           method: 'POST',
           dataType: 'json',
-          url: 'http://beta.myfav.es/include/api/modify-settings.php',
+          url: 'https://www.myfav.es/include/api/modify-settings.php',
           success: function(){},
           failure: function(){},
           data: {
@@ -64,7 +64,7 @@ fav4 = {
         settings = {
           method: 'POST',
           dataType: 'json',
-          url: 'http://beta.myfav.es/include/api/modify-settings.php',
+          url: 'https://www.myfav.es/include/api/modify-settings.php',
           success: function(){},
           failure: function(){},
           data: {
@@ -84,7 +84,7 @@ fav4 = {
         settings = {
           method: 'POST',
           dataType: 'json',
-          url: 'http://beta.myfav.es/include/api/modify-settings.php',
+          url: 'https://www.myfav.es/include/api/modify-settings.php',
           success: function(){},
           failure: function(){},
           data: {
@@ -236,7 +236,7 @@ fav4 = {
                   .html(html)
                   .off('change')
                   .on('change', function() {
-                    var 
+                    var
                       siteID = $(this).val(),
                       primarySite
                     ;
@@ -647,7 +647,7 @@ fav4 = {
 
     simple         : false,
 
-    domain: 'http://beta.myfav.es/',
+    domain: 'https://www.myfav.es/',
 
     iconsPerPage   : 8,
     iconsPerRow    : 4,

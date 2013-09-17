@@ -5,7 +5,7 @@
   "description"      : "Myfav.es is an elegant start page replacement for your browser.",
   "manifest_version" : 2,
   "default_locale"   : "en",
-  
+
   "icons": {
     "16"  : "icons/icon16.png",
     "48"  : "icons/icon48.png",
